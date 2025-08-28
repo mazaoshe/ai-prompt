@@ -4,6 +4,7 @@ title = 'AI Prompt Library'
 theme = 'hugo-theme-go-prompt'
 
 
+enableRobotsTXT = true
 buildDrafts = false
 buildFuture = false
 buildExpired = false
