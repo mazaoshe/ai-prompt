@@ -14,7 +14,6 @@ Disallow: /private/
 
 # 防止资源浪费（保持你的配置）
 Disallow: /*.json$
-Disallow: /*.xml$
 Disallow: /search/
 
 # 指向sitemap（保持你的配置）
