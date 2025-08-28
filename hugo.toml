@@ -32,7 +32,6 @@ relativeURLs = false
   series = 'series'
 
 [minify]
-  disableXML = true
   minifyOutput = true
   disableCSS = false
   disableHTML = false
