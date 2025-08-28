@@ -1,0 +1,50 @@
+User-agent: *
+Allow: /
+
+# 允许重要资源被抓取（提升SEO）
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /static/
+Allow: /sitemap.xml
+
+# 禁止抓取管理和私有内容
+Disallow: /admin/
+Disallow: /private/
+
+# 防止资源浪费（保持你的配置）
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /search/
+
+# 指向sitemap（保持你的配置）
+Sitemap: https://www.xuexiai123.com/sitemap.xml
+
+# 针对主要搜索引擎的优化
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# 针对技术内容的特殊优化
+User-agent: *
+# 允许爬取代码相关文件
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.md$
+
+# 社交媒体爬虫优化（提升分享效果）
+User-agent: facebookexternalhit/*
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# 控制爬取频率（避免服务器压力）
+Crawl-delay: 1
