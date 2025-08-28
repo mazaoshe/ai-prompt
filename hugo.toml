@@ -16,8 +16,7 @@ relativeURLs = false
   posts = ":slug"
 
 [outputs]
-  home = ["HTML", "RSS", "JSON", "WebAppManifest"]
-  section = ["HTML", "RSS"]
+  home = ["HTML", "RSS", "JSON", "WebAppManifest", "Sitemap"]  section = ["HTML", "RSS"]
   taxonomy = ["HTML", "RSS"]
   term = ["HTML", "RSS"]
 
