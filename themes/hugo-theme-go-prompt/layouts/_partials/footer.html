@@ -1,0 +1,119 @@
+<footer class="bg-background border-t">
+    <div class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- About Us -->
+            <div class="space-y-4">
+                <div class="flex items-center space-x-2">
+                    <div
+                        class="h-8 w-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                        <span class="text-sm font-bold text-white">AI</span>
+                    </div>
+                    <span class="text-xl font-bold text-gradient">{{ .Site.Title }}</span>
+                </div>
+                <p class="text-muted-foreground text-sm">
+                    {{ .Site.Params.description }}
+                </p>
+                <div class="flex space-x-4">
+                    <!-- Social media links can be added here -->
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="/" class="text-muted-foreground hover:text-primary transition-colors text-sm">Home</a>
+                    </li>
+                    <li><a href="/prompt-engineering/"
+                            class="text-muted-foreground hover:text-primary transition-colors text-sm">Prompt Engineering</a>
+                    </li>
+                    <li><a href="/templates/"
+                            class="text-muted-foreground hover:text-primary transition-colors text-sm">Prompt Templates</a></li>
+                    <li><a href="/share-prompts/" class="text-muted-foreground hover:text-primary transition-colors text-sm">Share Prompts</a></li>
+                </ul>
+            </div>
+
+            <!-- Categories -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold">Popular Categories</h3>
+                <ul class="space-y-2">
+                    {{ range first 4 (where site.Pages "Type" "categories") }}
+                    <li>
+                        <a href="{{ .Permalink }}"
+                            class="text-muted-foreground hover:text-primary transition-colors text-sm">
+                            {{ .Title }}
+                        </a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold">Contact Us</h3>
+                <ul class="space-y-2">
+                    <li class="text-muted-foreground text-sm">
+                        <div class="mr-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z" />
+                            </svg>
+                            </i>
+                            <a href="mailto:{{ .Site.Params.contact.email }}" target="_blank">
+                                {{ .Site.Params.contact.email }}
+                            </a>
+                    </li>
+                    <li class="text-muted-foreground text-sm">
+                        <div class="mr-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-github" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                            </svg>
+                        </div>
+                        <a href="{{ .Site.Params.contact.github }}" target="_blank" rel="noopener noreferrer">GitHub 
+                            Repository</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-muted-foreground text-sm">
+                © {{ now.Year }} {{ .Site.Title }}. All rights reserved.
+            </p>
+            <div class="text-muted-foreground text-sm flex">
+                <div class="relative group">
+                    <span class="cursor-help text-gray-500 hover:text-gray-700" title="Site Visits">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        <span id="busuanzi_value_site_pv">Loading</span>
+                    </span>
+                </div>
+
+                <div class="relative group">
+                    <span class="cursor-help text-gray-500 hover:text-gray-700" title="Total Visitors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        <span id="busuanzi_value_site_uv">Loading</span>
+                    </span>
+                </div>
+            </div>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="/privacy-policy/"
+                    class="text-muted-foreground hover:text-primary transition-colors text-sm">Privacy Policy</a>
+                <a href="/terms/" class="text-muted-foreground hover:text-primary transition-colors text-sm">Terms of
+                    Use</a>
+                <a href="/sitemap.xml"
+                    class="text-muted-foreground hover:text-primary transition-colors text-sm">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer>

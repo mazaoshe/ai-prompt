@@ -1,0 +1,33 @@
+{{ define "main" }}
+<!-- SEO meta 在 baseof.html 中处理，确保title/description/canonical都已覆盖 -->
+<div class="container mx-auto px-4 py-10">
+  <h1 class="text-4xl font-bold mb-8">{{ .Title }}</h1>
+  {{ $groups := .Pages.GroupByDate "2006" }}
+  {{ range $groups }}
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4 border-b pb-2">{{ .Key }}</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {{ range .Pages }}
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition cursor-pointer"
+             onclick="location='{{ .RelPermalink }}'">
+          <h3 class="text-lg font-bold hover:text-primary">{{ .Title }}</h3>
+          <p class="text-sm text-gray-500 mt-1">{{ .Date.Format "Jan 02, 2006" }}</p>
+          <p class="text-sm text-gray-600 mt-2">{{ with .Summary }}{{ . | plainify | truncate 100 }}{{ end }}</p>
+        </div>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+
+  {{ if .Paginator }}
+    <nav class="flex justify-between items-center mt-8" aria-label="Pagination">
+      {{ if .Paginator.HasPrev }}
+      <a href="{{ .Paginator.Prev.URL }}" rel="prev" class="btn">Previous</a>
+      {{ else }}<span></span>{{ end }}
+      {{ if .Paginator.HasNext }}
+      <a href="{{ .Paginator.Next.URL }}" rel="next" class="btn">Next</a>
+      {{ end }}
+    </nav>
+  {{ end }}
+</div>
+{{ end }}

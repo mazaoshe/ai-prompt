@@ -1,0 +1,51 @@
+{{ define "main" }}
+<div class="container mx-auto px-4 py-10">
+    <h1 class="text-4xl font-bold mb-8">Golang {{ .Title }}</h1>
+    <meta name="robots" content="noindex, follow">
+
+    {{ if eq .Title "Categories" }}
+    <!-- 显示所有分类 -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+        {{ $hasPosts := false }}
+        {{ range $taxonomy }}
+        {{ if eq .Page.Section "posts" }}
+        {{ $hasPosts = true }}
+        {{ end }}
+        {{ end }}
+        {{ if $hasPosts }}
+        {{ $categoryConfig := $.Site.Params.defaultCategoryConfig }}
+        {{ if isset $.Site.Params.categoryConfig $name }}
+        {{ $categoryConfig = index $.Site.Params.categoryConfig $name }}
+        {{ end }}
+
+        {{ $categoryPage := $.Site.GetPage (printf "/categories/%s" ($name | urlize)) }}
+        {{ $categoryURL := "" }}
+        {{ if $categoryPage }}
+        {{ $categoryURL = $categoryPage.RelPermalink }}
+        {{ else }}
+        {{ $categoryURL = printf "/categories/%s/" ($name | urlize) }}
+        {{ end }}
+        <a href="{{ $categoryURL }}"
+            class="block bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
+            <h2 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Golang {{ $categoryConfig.displayName }}</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-300">{{ len $taxonomy }} Golang snippets</p>
+            {{ with $.Site.GetPage (printf "/categories/%s" ($name | urlize)) }}
+            {{ if .Description }}
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">{{ .Description }}</p>
+            {{ end }}
+            {{ end }}
+        </a>
+        {{ end }}
+        {{ end }}
+    </div>
+    {{ else if eq .Title "Tags" }}
+    <!-- 显示所有标签 -->
+    <p class="text-center mb-12 max-w-3xl mx-auto">
+      Browse our collection of Golang tags to find specific Go code examples and snippets. 
+      These tags represent common topics and techniques in Go programming.
+    </p>
+    {{ partial "home/tags-cloud.html" . }}
+    {{ end }}
+</div>
+{{ end }}

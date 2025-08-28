@@ -1,0 +1,59 @@
+<!-- layouts/partials/head/seo.html -->
+{{ if .IsPage }}
+<!-- OpenGraph Meta Tags -->
+<meta property="og:title" content="{{ .Title }} – {{ .Site.Title }}" />
+<meta property="og:description" content="{{ .Description | default .Site.Params.description }}" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:site_name" content="{{ site.Title }}" />
+
+{{ with .Params.cover }}
+<meta property="og:image" content="{{ . | absURL }}" />
+{{ end }}
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ .Title }} – {{ .Site.Title }}" />
+<meta name="twitter:description" content="{{ .Description | default .Site.Params.description }}" />
+
+{{ with .Params.cover }}
+<meta name="twitter:image" content="{{ . | absURL }}" />
+{{ end }}
+
+{{ with site.Params.author }}
+<meta name="twitter:site" content="@{{ . }}" />
+{{ end }}
+
+<!-- Optional Article Metadata -->
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z" }}" />
+{{ if not .Lastmod.IsZero }}
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z" }}" />
+{{ end }}
+
+{{ range .Params.tags }}
+<meta property="article:tag" content="{{ . }}" />
+{{ end }}
+
+{{ range .Params.categories }}
+<meta property="article:section" content="{{ . }}" />
+{{ end }}
+
+{{ else }}
+<!-- 首页或其他页面的 OpenGraph 设置 -->
+<meta property="og:title" content="{{ site.Title }}" />
+<meta property="og:description" content="{{ .Site.Params.description }}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:site_name" content="{{ site.Title }}" />
+<meta property="og:image" content="{{ .Site.Params.defaultImage }}" />
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ site.Title }}" />
+<meta name="twitter:description" content="{{ .Site.Params.description }}" />
+<meta name="twitter:image" content="{{ .Site.Params.defaultImage }}" />
+
+{{ with site.Params.twitter }}
+<meta name="twitter:site" content="@{{ . }}" />
+{{ end }}
+{{ end }}

@@ -1,0 +1,31 @@
+<!-- Description -->
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+<!-- Keywords -->
+{{ if .IsHome }}
+  <meta name="keywords" content="{{ delimit .Site.Params.keywords.keywords ", " }}">
+{{ else if .IsSection }}
+  <meta name="keywords" content="{{ .Title }}, {{ delimit .Site.Params.keywords.keywords ", " }}">
+{{ else if .IsPage }}
+  <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", " }}{{ else }}{{ delimit .Site.Params.keywords.keywords ", " }}{{ end }}">
+{{ end }}
+
+<!-- 图标与应用元信息 -->
+<!-- Favicon -->
+<link rel="icon" href="{{ site.Params.favicon | default "favicon.ico" | absURL }}">
+<link rel="apple-touch-icon" href="{{ site.Params.apple_touch_icon | default "/apple-touch-icon.png" }}">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- App Meta -->
+<meta name="application-name" content="{{ .Site.Params.app.title | default .Site.Title }}">
+<meta name="apple-mobile-web-app-title" content="{{ .Site.Params.app.title | default .Site.Title }}">
+
+<!-- Theme Color -->
+{{ with .Site.Params.app.themeColor }}
+  <meta name="theme-color" content="{{ . }}">
+{{ end }}
+
+<!-- Tile Color for Windows -->
+{{ with .Site.Params.app.tileColor }}
+  <meta name="msapplication-TileColor" content="{{ . }}">
+{{ end }}

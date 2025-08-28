@@ -1,0 +1,175 @@
+{{ define "main" }}
+<!-- layouts/page/about.html -->
+<div class="min-h-screen bg-background">
+    <div class="container mx-auto px-4 py-16">
+        <!-- Hero Section -->
+        <div class="text-center max-w-4xl mx-auto mb-16">
+            <h1 class="text-5xl font-bold mb-6">
+                {{ .Title }} <span class="text-gradient">{{ .Site.Title }}</span>
+            </h1>
+            <p class="text-xl text-muted-foreground leading-relaxed">
+                {{ .Site.Params.description }}
+            </p>
+        </div>
+
+        <!-- Mission Statement -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div>
+                <h2 class="text-3xl font-bold mb-6">Our Mission</h2>
+                <p class="text-muted-foreground leading-relaxed mb-4">
+                    {{ .Site.Title }} exists to make AI interaction faster and more accessible.
+                    We believe that having quick access to well-documented, practical prompts
+                    can significantly accelerate the learning process and boost productivity.
+                </p>
+                <p class="text-muted-foreground leading-relaxed">
+                    Every prompt is carefully crafted with real-world use cases in mind,
+                    complete with explanations and best practices to help you understand
+                    not just the "how" but also the "why" behind each solution.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="card text-center p-6">
+                    <div class="card-header pb-3">
+                        <span class="inline-block text-primary text-3xl mb-2">💻</span>
+                        <div class="text-lg font-semibold">Practical</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="text-muted-foreground">Real solutions for everyday AI challenges</div>
+                    </div>
+                </div>
+                <div class="card text-center p-6">
+                    <div class="card-header pb-3">
+                        <span class="inline-block text-primary text-3xl mb-2">❤️</span>
+                        <div class="text-lg font-semibold">Free</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="text-muted-foreground">100% free and open source for the AI community</div>
+                    </div>
+                </div>
+                <div class="card text-center p-6">
+                    <div class="card-header pb-3">
+                        <span class="inline-block text-primary text-3xl mb-2">📖</span>
+                        <div class="text-lg font-semibold">Educational</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="text-muted-foreground">Step-by-step explanations with best practices</div>
+                    </div>
+                </div>
+                <div class="card text-center p-6">
+                    <div class="card-header pb-3">
+                        <span class="inline-block text-primary text-3xl mb-2">🌍</span>
+                        <div class="text-lg font-semibold">Community</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="text-muted-foreground">Built by AI users, for AI users worldwide</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- What You'll Find -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8">What You'll Find</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold">Prompt Categories</h3>
+                    <ul class="space-y-2 text-muted-foreground">
+                        <li>• Prompt engineering techniques</li>
+                        <li>• Model-specific prompts (ChatGPT, Grok, etc.)</li>
+                        <li>• Creative writing and content generation</li>
+                        <li>• Coding and technical problem solving</li>
+                        <li>• Business and productivity prompts</li>
+                        <li>• Educational and learning prompts</li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold">Features</h3>
+                    <ul class="space-y-2 text-muted-foreground">
+                        <li>• Syntax-highlighted prompt examples</li>
+                        <li>• One-click copy functionality</li>
+                        <li>• Detailed explanations</li>
+                        <li>• Mobile-responsive design</li>
+                        <li>• Fast search and filtering</li>
+                        <li>• SEO-optimized for easy discovery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Helpful Resources -->
+        <div class="bg-muted/50 rounded-2xl p-8 mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8">Helpful Resources</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="card p-6">
+                    <div class="card-header flex items-center mb-2">
+                        <span class="text-primary text-xl mr-2">📖</span>
+                        <div class="font-semibold">Prompt Engineering Guide</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="text-muted-foreground mb-4">
+                            Learn the fundamentals of prompt engineering.
+                        </div>
+                        <a href="/prompt-engineering" class="btn btn-outline text-sm">
+                            View Guide
+                        </a>
+                    </div>
+                </div>
+                <div class="card p-6">
+                    <div class="card-header flex items-center mb-2">
+                        <span class="text-primary text-xl mr-2">💻</span>
+                        <div class="font-semibold">Model Comparison</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="text-muted-foreground mb-4">
+                            Compare performance of different AI models.
+                        </div>
+                        <a href="/models" class="btn btn-outline text-sm">
+                            Compare Models
+                        </a>
+                    </div>
+                </div>
+                <div class="card p-6">
+                    <div class="card-header flex items-center mb-2">
+                        <span class="text-primary text-xl mr-2">🐙</span>
+                        <div class="font-semibold">AI Community</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="text-muted-foreground mb-4">
+                            Join the AI community and contribute to projects.
+                        </div>
+                        <a href="/share-prompts" class="btn btn-outline text-sm">
+                            Share Prompts
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center">
+            <h2 class="text-3xl font-bold mb-4">Start Exploring</h2>
+            <p class="text-muted-foreground mb-8 max-w-2xl mx-auto">
+                Ready to find the AI prompts you need? Browse our collection of practical prompts
+                and speed up your AI interaction workflow.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/" class="btn btn-primary btn-lg shadow-elegant">
+                    <span class="mr-2">💻</span> Browse Prompts
+                </a>
+                <a href="/prompt-engineering" class="btn btn-outline btn-lg">
+                    View Categories
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "{{ .Site.Title }}",
+  "url": "{{ .Site.BaseURL }}/about",
+  "description": "{{ .Site.Params.description }}"
+}
+</script>
+{{ end }}

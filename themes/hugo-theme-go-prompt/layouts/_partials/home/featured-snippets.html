@@ -1,0 +1,73 @@
+<!--
+ * @Author: Yang
+ * @Date: 2025-08-19 10:36:47
+ * @Description: 精选片段
+-->
+<section class="container mx-auto px-10 py-16">
+    <div class="flex items-center justify-between mb-8">
+        <div>
+            <h2 class="text-3xl font-bold mb-2">Featured Prompts</h2>
+            <p class="text-gray-600">
+                Popular AI prompts to get you started
+            </p>
+        </div>
+        <a href="/posts/" class="btn btn-outline">View All</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {{ range first 6 (where .Site.RegularPages "Type" "posts") }}
+        <div class="bg-white rounded-lg border p-6 hover-lift hover-scale transition-all duration-300">
+            <div class="flex items-start justify-between mb-3">
+                {{ if .Params.categories }}
+                {{ range .Params.categories }}
+                <span class="badge badge-secondary">{{ . }}</span>
+                {{ end }}
+                {{ else }}
+                <span class="badge badge-secondary">Prompt</span>
+                {{ end }}
+                <div class="flex items-center text-xs text-gray-500">
+                    <div class="mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                    </div>
+                    {{ if .Params.readingTime }}
+                    {{ .Params.readingTime }} min
+                    {{ else }}
+                    {{ div (countwords .Content) 220.0 | math.Ceil }} min
+                    {{ end }}
+                </div>
+            </div>
+            <h3 class="text-lg font-semibold mb-2 hover:text-cyan-500 transition-colors">
+                {{ .Title }}
+            </h3>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                {{ if .Params.description }}
+                {{ .Params.description }}
+                {{ else }}
+                {{ .Summary | plainify | truncate 100 }}
+                {{ end }}
+            </p>
+            <div class="flex items-center justify-between">
+                <div class="flex flex-wrap gap-1">
+                    {{ range first 3 .Params.tags }}
+                    <span class="badge badge-outline text-xs">{{ . }}</span>
+                    {{ end }}
+                </div>
+                <a href="{{ .RelPermalink }}" class="btn btn-ghost text-sm px-3 py-1">
+                    View
+                    <div class="ml-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</section>

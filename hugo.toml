@@ -1,0 +1,117 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'AI Prompt Library'
+theme = 'hugo-theme-go-prompt'
+
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+enableEmoji = true
+canonifyURLs = true
+relativeURLs = false
+
+[permalinks]
+  posts = ":slug"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON", "WebAppManifest"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
+
+[sitemap]
+  changefreq = 'weekly'
+  priority = 0.7
+  filename = 'sitemap.xml'
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+  series = 'series'
+
+[minify]
+  disableXML = true
+  minifyOutput = true
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+
+[imaging]
+  resampleFilter = 'CatmullRom'
+  quality = 85
+  anchor = 'smart'
+  bgColor = '#ffffff'
+  hint = 'photo'
+
+[security]
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$']
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['$$', '$$'], ['\[', '\]']]
+          inline = [['\(', '\)']]
+
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    style = 'dracula'
+    tabWidth = 2
+
+[params]
+  description = "Free AI prompts for all tasks. Providing high-quality AI prompts to help users solve problems quickly and improve AI interaction efficiency."
+  author = "Silas"
+  defaultImage = "https://image.ypplog.cn/go-snippets-og-image.avif"
+
+  [params.contact]
+    email = "mazaoshe@hotmail.com"
+    github = "https://github.com/mazaoshe"
+    
+  [params.categoryConfig]
+    "Writing" = { icon = "✍️", description = "Prompts for blogging, storytelling, and content creation", displayName = "Writing", order = 1 }
+    "Programming" = { icon = "💻", description = "Prompts for coding, debugging, and software development", displayName = "Programming", order = 2 }
+    "Marketing" = { icon = "📈", description = "Prompts for SEO, social media, and campaign ideas", displayName = "Marketing", order = 3 }
+    "Data Analysis" = { icon = "📊", description = "Prompts for data processing, visualization, and insights", displayName = "Data Analysis", order = 4 }
+    "Image Generation" = { icon = "🖼️", description = "Prompts for AI art, design, and visual content", displayName = "Image Generation", order = 5 }
+    "Education" = { icon = "🎓", description = "Prompts for teaching, learning, and research", displayName = "Education", order = 6 }
+    "Business & Productivity" = { icon = "💼", description = "Prompts for planning, management, and efficiency", displayName = "Business & Productivity", order = 7 }
+    "Creative Projects" = { icon = "🎨", description = "Prompts for music, art, and innovative ideas", displayName = "Creative Projects", order = 8 }
+    
+  [params.defaultCategoryConfig]
+    icon = "📚"
+    description = "AI prompts and techniques"
+    displayName = "Other"
+    order = 100
+
+  [params.tagConfig]
+    "ChatGPT" = { icon = "🤖", description = "Prompts optimized for ChatGPT and GPT models", displayName = "ChatGPT", order = 1 }
+    "Grok" = { icon = "🚀", description = "Prompts tailored for xAI's Grok, with real-time focus", displayName = "Grok", order = 2 }
+    "Claude" = { icon = "🧠", description = "Prompts designed for Anthropic's Claude AI", displayName = "Claude", order = 3 }
+    "LLaMA" = { icon = "🐑", description = "Prompts for Meta AI's LLaMA and open-source models", displayName = "LLaMA", order = 4 }
+    "Chain of Thought" = { icon = "🧵", description = "Prompts using step-by-step reasoning", displayName = "Chain of Thought", order = 5 }
+    "Few-Shot" = { icon = "📚", description = "Prompts with few example inputs", displayName = "Few-Shot", order = 6 }
+    "Role-Playing" = { icon = "🎭", description = "Prompts assigning specific roles to AI", displayName = "Role-Playing", order = 7 }
+    "Structured Output" = { icon = "📋", description = "Prompts for JSON or formatted outputs", displayName = "Structured Output", order = 8 }
+        
+  [params.keywords]
+    keywords = [
+      "AI prompts",
+      "free AI prompts", 
+      "ChatGPT prompts",
+      "prompt engineering",
+      "AI prompt templates",
+      "prompt sharing"
+    ]

@@ -1,0 +1,34 @@
+<!-- Waline 评论框 -->
+<div id="waline"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@waline/client@3.6.0/dist/waline.min.css" />
+
+<!-- 引入 Waline JS -->
+<script src="https://cdn.jsdelivr.net/npm/@waline/client@3.6.0/dist/waline.umd.min.js"></script>
+
+<!-- 初始化 -->
+<script>
+    Waline.init({
+        el: '#waline',
+        serverURL: 'https://waline.ypplog.cn/',  // 替换为你的实际地址
+        token: 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiIsImFkbWluIjp0cnVlfQ.KFkSqA51Zlxm1v2oE06F3ZB_jDALM3vQXlE0AS4E_ajOJ0a04GYyxOIRGRVlokhy-ox6vqOvIb21q9rezmG2Eg',
+        path: '{{ .RelPermalink }}',          // 当前页面路径
+        emoji: [                              // 可选：自定义表情
+            'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo',
+        ],
+        imageUploader: false,
+        lang: {{ .Language.Lang }},
+        login: 'disable',
+        search: false,
+        noCopyright: false,
+        wordLimit: 1024,
+        comment: true,
+        pageview: true, 
+        reaction: true,
+        locale: {
+        placeholder: '{{ i18n "waline_placeholder" }}',
+        reactionTitle: '{{ i18n "waline_reaction_title" }}',
+        sofa: '{{ i18n "waline_sofa" }}',
+        comment: '{{ i18n "waline_comment" }}'
+    },
+    });
+</script>
