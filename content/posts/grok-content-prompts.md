@@ -1,13 +1,13 @@
 ---
 title: "Grok Content Prompts for Advanced AI Interactions"
-description: "Discover how to craft Grok-optimized prompts for creative and insightful content. Learn advanced techniques to get the most from xAI's Grok AI model."
+description: "Harness the power of xAI's Grok with these specialized content creation prompts. Designed specifically for Grok's unique capabilities, these prompts help you generate high-quality content with real-time information access."
 date: 2025-08-28
 lastmod: 2025-08-28
-tags: ["Grok", "Creative Projects", "ChatGPT", "Claude"]
-categories: ["Creative Projects"]
+tags: ["Content Strategist", "Tech Writer", "Digital Marketer", "Social Media Manager", "Communications Specialist"]
+categories: ["Writing"]
 series: ["Model-Specific Prompts"]
-images: ["/images/grok-prompts.png"]
-readingTime: 14
+images: ["/images/grok-content-prompts.avif"]
+readingTime: 15
 ---
 
 ## Introduction

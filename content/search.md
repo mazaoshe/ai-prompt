@@ -1,93 +1,185 @@
 ---
 title: "Search"
+description: "Search for AI prompts by keywords, categories, tags, or professional roles."
+layout: "page"
+_build:
+  render: "false"
 ---
 
-<div class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-6">Search Prompts</h1>
-    
-    <div class="mb-8">
-        <div class="relative max-w-2xl">
-            <input type="text" id="search-input" placeholder="Enter keywords to search AI prompts..." 
-                   class="w-full px-4 py-3 pl-12 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:bg-gray-800 dark:text-white">
-            <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" 
-                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-        </div>
-    </div>
-    
-    <div id="search-results" class="space-y-4">
-        <!-- 搜索结果将在这里显示 -->
-    </div>
+<div class="search-container">
+  <div class="search-box">
+    <input type="text" id="search-input" placeholder="Search for prompts, categories, tags, or roles..." autocomplete="off">
+    <div id="search-results"></div>
+  </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"></script>
 <script>
-// 搜索功能实现
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('search-input');
-    const searchResults = document.getElementById('search-results');
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  
+  // 获取所有文章数据
+  fetch('/index.json')
+    .then(response => response.json())
+    .then(data => {
+      // 初始化Fuse.js
+      const fuse = new Fuse(data, {
+        keys: ['title', 'description', 'tags', 'categories', 'roles'],
+        includeScore: true,
+        minMatchCharLength: 2,
+        threshold: 0.3
+      });
+      
+      // 检查URL参数，支持按角色过滤
+      const urlParams = new URLSearchParams(window.location.search);
+      const roleFilter = urlParams.get('role');
+      if (roleFilter) {
+        searchInput.value = `role:"${roleFilter}"`;
+        performSearch(fuse, `role:"${roleFilter}"`);
+      }
+      
+      // 监听输入事件
+      searchInput.addEventListener('input', (e) => {
+        performSearch(fuse, e.target.value);
+      });
+    });
+  
+  function performSearch(fuse, query) {
+    // 检查是否是角色搜索
+    const roleMatch = query.match(/role:"([^"]+)"/);
+    let results = [];
     
-    // 获取搜索索引
-    fetch('/index.json')
-        .then(response => response.json())
-        .then(data => {
-            searchInput.addEventListener('input', function() {
-                const query = this.value.trim().toLowerCase();
-                if (query.length === 0) {
-                    searchResults.innerHTML = '';
-                    return;
-                }
-                
-                // 执行搜索
-                const results = data.filter(item => {
-                    return (
-                        (item.title && item.title.toLowerCase().includes(query)) ||
-                        (item.description && item.description.toLowerCase().includes(query)) ||
-                        (item.content && item.content.toLowerCase().includes(query)) ||
-                        (item.tags && item.tags.some(tag => tag.toLowerCase().includes(query)))
-                    );
-                });
-                
-                // 显示结果
-                displayResults(results, query);
-            });
-        })
-        .catch(error => {
-            console.error('Error loading search index:', error);
-            searchResults.innerHTML = '<p class="text-red-500 dark:text-red-400">Failed to load search index.</p>';
-        });
-    
-    function displayResults(results, query) {
-        if (results.length === 0) {
-            searchResults.innerHTML = '<p class="text-gray-500 dark:text-gray-400">No prompts found matching your search.</p>';
-            return;
-        }
-        
-        const resultsHTML = results.map(item => `
-            <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 hover:shadow-lg transition duration-300">
-                <h3 class="text-xl font-semibold mb-2">
-                    <a href="${item.permalink}" class="text-cyan-600 dark:text-cyan-400 hover:underline">${highlightText(item.title, query)}</a>
-                </h3>
-                <p class="text-gray-600 dark:text-gray-300 mb-3">${highlightText(item.description || '', query)}</p>
-                ${item.tags && item.tags.length > 0 ? `
-                    <div class="flex flex-wrap gap-2">
-                        ${item.tags.map(tag => `
-                            <span class="px-2 py-1 text-xs rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
-                                ${tag}
-                            </span>
-                        `).join('')}
-                    </div>
-                ` : ''}
-            </div>
-        `).join('');
-        
-        searchResults.innerHTML = resultsHTML;
+    if (roleMatch) {
+      // 按角色过滤
+      const role = roleMatch[1];
+      results = fuse.getIndex().records.filter(record => {
+        return record.v.roles && record.v.roles.includes(role);
+      });
+    } else if (query.length > 1) {
+      // 普通搜索
+      results = fuse.search(query);
     }
     
-    function highlightText(text, query) {
-        if (!query) return text;
-        const regex = new RegExp(`(${query})`, 'gi');
-        return text.replace(regex, '<span class="bg-yellow-200 dark:bg-yellow-600">$1</span>');
+    displayResults(results, roleMatch ? true : false);
+  }
+  
+  function displayResults(results, isRoleFilter = false) {
+    if (results.length === 0 && searchInput.value.length > 1) {
+      searchResults.innerHTML = '<p class="no-results">No results found.</p>';
+      return;
     }
-});
+    
+    let html = '<div class="results-list">';
+    const items = isRoleFilter ? results : results.slice(0, 20);
+    
+    items.forEach(result => {
+      const item = isRoleFilter ? result.v : result.item;
+      html += `
+        <div class="result-item">
+          <h3><a href="${item.permalink}">${item.title}</a></h3>
+          <p class="description">${item.description}</p>
+          <div class="meta">
+            <span class="date">${item.date}</span>
+            ${item.categories ? item.categories.map(cat => `<span class="category">${cat}</span>`).join('') : ''}
+            ${item.tags ? item.tags.map(tag => `<span class="tag">${tag}</span>`).join('') : ''}
+            ${item.roles ? item.roles.map(role => `<span class="role">${role}</span>`).join('') : ''}
+          </div>
+        </div>
+      `;
+    });
+    
+    html += '</div>';
+    searchResults.innerHTML = html;
+  }
 </script>
+
+<style>
+.search-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.results-list {
+  margin-top: 20px;
+}
+
+.result-item {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.result-item h3 {
+  margin: 0 0 10px 0;
+}
+
+.result-item h3 a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.result-item h3 a:hover {
+  text-decoration: underline;
+}
+
+.description {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.meta span {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.date {
+  background-color: #f8f9fa;
+  color: #6c757d;
+}
+
+.category {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.tag {
+  background-color: #cce7ff;
+  color: #004085;
+}
+
+.role {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+</style>

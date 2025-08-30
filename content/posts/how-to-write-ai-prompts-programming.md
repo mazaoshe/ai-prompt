@@ -1,13 +1,13 @@
 ---
 title: "How to Write AI Prompts for Programming Tasks"
-description: "Learn how to write effective AI prompts for programming tasks including code generation, debugging, and technical explanations. Master prompt engineering for better coding assistance."
+description: "Learn the art of crafting effective AI prompts for programming tasks. Master techniques to get better code generation, debugging assistance, and technical problem-solving from AI models."
 date: 2025-08-28
 lastmod: 2025-08-28
-tags: ["Programming", "ChatGPT", "Grok", "Claude", "Technical"]
+tags: ["Software Developer", "Programmer", "Engineer", "Tech Lead", "Code Reviewer"]
 categories: ["Programming"]
 series: ["Technical Prompts"]
-images: ["/images/programming-prompts.png"]
-readingTime: 15
+images: ["/images/programming-prompts.avif"]
+readingTime: 18
 ---
 
 ## Introduction

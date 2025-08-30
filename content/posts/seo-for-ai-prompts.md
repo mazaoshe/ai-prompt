@@ -1,13 +1,13 @@
 ---
 title: "SEO for AI Prompts: Optimizing Your Prompts for Better Results"
-description: "Learn how to optimize AI prompts for SEO to improve search visibility and get better results. Master keyword research, structured data, and content optimization techniques."
+description: "Discover how to optimize your AI prompts for better results using SEO principles. Learn to craft prompts that are more effective and likely to produce high-quality, relevant outputs."
 date: 2025-08-28
 lastmod: 2025-08-28
-tags: ["Marketing", "ChatGPT", "Grok", "Claude", "SEO"]
-categories: ["Marketing"]
+tags: ["SEO Specialist", "Content Strategist", "Digital Marketer", "Content Manager", "Marketing Analyst"]
+categories: ["Writing"]
 series: ["SEO Optimization"]
-images: ["/images/seo-prompts.png"]
-readingTime: 16
+images: ["/images/seo-ai-prompts.avif"]
+readingTime: 12
 ---
 
 ## Introduction

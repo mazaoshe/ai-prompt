@@ -1,13 +1,13 @@
 ---
-title: "Content Creation with ChatGPT"
-description: "Powerful prompts for creating various types of content using ChatGPT"
+title: "ChatGPT Content Creation"
+description: "Master the art of content creation with ChatGPT. Learn how to generate high-quality blog posts, articles, social media content, and more using advanced AI prompts."
 date: 2025-08-28
 lastmod: 2025-08-28
-tags: ["ChatGPT", "Writing", "Content Creation"]
+tags: ["Content Creator", "Blogger", "Copywriter", "Social Media Manager", "Marketing Specialist"]
 categories: ["Writing"]
-series: ["Model-Specific Prompts"]
-images: ["/images/chatgpt-content.png"]
-readingTime: 7
+series: ["Writing Prompts"]
+images: ["/images/chatgpt-content-creation.png"]
+readingTime: 10
 ---
 
 ## Introduction

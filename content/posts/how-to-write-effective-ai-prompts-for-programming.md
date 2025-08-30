@@ -1,13 +1,13 @@
 ---
 title: "How to Write Effective AI Prompts for Programming"
-description: "Learn how to write effective AI prompts for programming tasks. This comprehensive guide covers best practices for getting better code generation, debugging help, and technical explanations from AI models."
+description: "Master the skill of creating effective AI prompts for programming challenges. Discover best practices, techniques, and examples to enhance your coding workflow with AI assistance."
 date: 2025-08-28
 lastmod: 2025-08-28
-tags: ["Programming", "ChatGPT", "Grok", "Claude", "Technical"]
+tags: ["Software Engineer", "Developer", "Programmer", "Tech Lead", "Engineering Manager"]
 categories: ["Programming"]
 series: ["Technical Prompts"]
-images: ["/images/programming-ai-prompts.png"]
-readingTime: 18
+images: ["/images/effective-programming-prompts.avif"]
+readingTime: 15
 ---
 
 ## Introduction

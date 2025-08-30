@@ -1,13 +1,13 @@
 ---
 title: "Prompt Engineering Fundamentals"
-description: "Learn the fundamentals of prompt engineering with practical examples and best practices for AI interactions"
+description: "Learn the fundamentals of prompt engineering with practical examples and best practices. Understand how to craft effective prompts that produce better results with AI models."
 date: 2025-08-28
 lastmod: 2025-08-28
-tags: ["ChatGPT", "Grok", "Claude", "Prompt Engineering"]
-categories: ["Writing"]
+tags: ["AI Researcher", "Data Scientist", "ML Engineer", "Prompt Engineer", "AI Specialist"]
+categories: ["Prompt Engineering"]
 series: ["AI Prompt Fundamentals"]
-images: ["/images/prompt-engineering.png"]
-readingTime: 5
+images: ["/images/prompt-engineering-fundamentals.avif"]
+readingTime: 8
 ---
 
 ## Introduction

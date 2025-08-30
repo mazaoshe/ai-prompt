@@ -3,7 +3,7 @@ title: "Best AI Prompts for Beginners 2025"
 description: "Discover the best AI prompts for beginners in 2025. Learn how to craft effective prompts that produce better results with AI models including ChatGPT, Claude, and Grok."
 date: 2025-08-28
 lastmod: 2025-08-28
-tags: ["ChatGPT", "Grok", "Claude", "Prompt Engineering", "Beginners"]
+tags: ["Beginner", "Student", "Content Creator", "Writer", "Researcher"]
 categories: ["Writing"]
 series: ["AI Prompt Fundamentals"]
 images: ["/images/ai-prompts-beginners-2025.png"]

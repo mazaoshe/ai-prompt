@@ -1,13 +1,13 @@
 ---
 title: "Business and Productivity AI Prompts"
-description: "Powerful AI prompts for business strategy, productivity, and professional development"
+description: "Enhance your business operations and personal productivity with these carefully crafted AI prompts. Streamline workflows, improve decision-making, and boost efficiency across all aspects of your professional life."
 date: 2025-08-28
 lastmod: 2025-08-28
-tags: ["Business & Productivity", "ChatGPT", "Grok", "Claude"]
+tags: ["Business Owner", "Manager", "Entrepreneur", "Executive", "Productivity Coach", "Business", "Productivity", "Efficiency", "Workflow", "Management"]
 categories: ["Business & Productivity"]
 series: ["Professional Prompts"]
-images: ["/images/business-productivity.png"]
-readingTime: 10
+images: ["/images/business-productivity-ai-prompts.avif"]
+readingTime: 12
 ---
 
 ## Introduction

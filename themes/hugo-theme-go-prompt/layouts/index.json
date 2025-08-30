@@ -1,14 +1,17 @@
-{{- $pages := where .Site.RegularPages "Type" "in" (slice "posts") -}}
-{{- $index := slice -}}
-{{- range $pages -}}
-  {{- $index = $index | append (dict 
-    "title" .Title
-    "description" .Description
-    "content" .Plain
-    "permalink" .Permalink
-    "tags" .Params.tags
-    "categories" .Params.categories
-    "date" .Date
-  ) -}}
+{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
+{{- $pages = where $pages "Params.hidden" "!=" true -}}
+[
+{{- range $index, $page := $pages -}}
+{{- if $index }}, {{ end -}}
+{
+  "title": {{ $page.Title | plainify | jsonify }},
+  "description": {{ $page.Description | plainify | jsonify }},
+  "permalink": {{ $page.RelPermalink | jsonify }},
+  "date": {{ $page.Date.Format "2006-01-02" | jsonify }},
+  "tags": {{ $page.Params.Tags | jsonify }},
+  "categories": {{ $page.Params.Categories | jsonify }},
+  "roles": {{ $page.Params.roles | jsonify }},
+  "content": {{ $page.Plain | jsonify }}
+}
 {{- end -}}
-{{- $index | jsonify -}}
+]

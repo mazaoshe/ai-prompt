@@ -1,13 +1,13 @@
 ---
 title: "Free Writing Prompt Templates for Content Creators"
-description: "Access free writing prompt templates designed for bloggers, copywriters, and content creators. These templates help generate engaging content efficiently using AI tools."
+description: "Access a comprehensive collection of free writing prompt templates designed for content creators. Boost your writing productivity and overcome creative blocks with these ready-to-use AI prompts."
 date: 2025-08-28
 lastmod: 2025-08-28
-tags: ["ChatGPT", "Writing", "Templates", "Content Creation"]
+tags: ["Content Creator", "Blogger", "Writer", "Copywriter", "Social Media Manager"]
 categories: ["Writing"]
 series: ["Writing Prompts"]
-images: ["/images/writing-prompts.png"]
-readingTime: 12
+images: ["/images/writing-prompt-templates.avif"]
+readingTime: 10
 ---
 
 ## Introduction

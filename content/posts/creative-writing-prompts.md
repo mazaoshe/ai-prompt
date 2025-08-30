@@ -1,13 +1,13 @@
 ---
 title: "Creative Writing AI Prompts"
-description: "Inspiring prompts for creative writing, storytelling, and artistic projects"
+description: "Unleash your creativity with these AI prompts designed for storytellers, novelists, and creative writers. Generate ideas, develop characters, and overcome writer's block with the power of AI."
 date: 2025-08-28
 lastmod: 2025-08-28
-tags: ["Creative Projects", "ChatGPT", "Grok", "Claude"]
-categories: ["Creative Projects"]
+tags: ["Writer", "Novelist", "Screenwriter", "Storyteller", "Content Creator"]
+categories: ["Writing"]
 series: ["Creative Prompts"]
-images: ["/images/creative-writing.png"]
-readingTime: 9
+images: ["/images/creative-writing-ai-prompts.avif"]
+readingTime: 10
 ---
 
 ## Introduction

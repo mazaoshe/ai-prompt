@@ -3,7 +3,7 @@ title: "Five Thinkers Council for Problem Solving"
 description: "A powerful AI prompt technique that simulates a roundtable discussion with historical and contemporary intellectuals to solve complex dilemmas through multi-faceted analysis."
 date: 2025-08-30T11:07:53+08:00
 categories: ["Prompt Engineering"]
-tags: ["AI Thinking", "Problem Solving", "Cognitive Simulation", "Decision Making", "Thought Leadership"]
+tags: ["Strategic Planner", "Business Analyst", "Project Manager", "Consultant", "Researcher", "Innovation Manager"]
 series: ["AI Prompt Techniques"]
 slug: "five-thinkers-council-for-problem-solving"
 keywords: ["Five Thinkers Council", "problem solving AI prompt", "intellectual roundtable simulation", "multi-perspective analysis", "cognitive diversity prompt"]

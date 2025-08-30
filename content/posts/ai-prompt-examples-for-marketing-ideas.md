@@ -3,7 +3,7 @@ title: "AI Prompt Examples for Marketing Ideas"
 description: "Discover powerful AI prompt examples for generating marketing ideas. Boost your campaigns with creative concepts for content, social media, email marketing, and more."
 date: 2025-08-28
 lastmod: 2025-08-28
-tags: ["Marketing", "ChatGPT", "Grok", "Claude", "Campaigns"]
+tags: ["Marketing Manager", "Content Strategist", "Digital Marketer", "Brand Manager", "Social Media Manager"]
 categories: ["Marketing"]
 series: ["Marketing Prompts"]
 images: ["/images/marketing-ai-prompts.png"]

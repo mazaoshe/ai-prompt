@@ -1,13 +1,13 @@
 ---
 title: "Free ChatGPT Prompt Templates for Writing"
-description: "Access free ChatGPT writing prompt templates to enhance your content creation workflow. These templates cover blog posts, marketing copy, creative writing, and more."
+description: "Access a collection of free ChatGPT prompt templates specifically designed for various writing tasks. Boost your writing productivity and creativity with these ready-to-use AI prompts."
 date: 2025-08-28
 lastmod: 2025-08-28
-tags: ["ChatGPT", "Writing", "Templates", "Content Creation"]
+tags: ["Writer", "Blogger", "Content Creator", "Student", "Copywriter"]
 categories: ["Writing"]
 series: ["Writing Prompts"]
-images: ["/images/chatgpt-writing-templates.png"]
-readingTime: 15
+images: ["/images/chatgpt-writing-prompts.avif"]
+readingTime: 12
 ---
 
 ## Introduction

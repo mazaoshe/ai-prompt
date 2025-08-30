@@ -16,7 +16,8 @@ relativeURLs = false
   posts = ":slug"
 
 [outputs]
-  home = ["HTML", "RSS", "JSON", "WebAppManifest", "Sitemap"]  section = ["HTML", "RSS"]
+  home = ["HTML", "RSS", "JSON", "WebAppManifest", "Sitemap"]  
+  section = ["HTML", "RSS"]
   taxonomy = ["HTML", "RSS"]
   term = ["HTML", "RSS"]
 
@@ -93,16 +94,6 @@ relativeURLs = false
     description = "AI prompts and techniques"
     displayName = "Other"
     order = 100
-
-  [params.tagConfig]
-    "ChatGPT" = { icon = "🤖", description = "Prompts optimized for ChatGPT and GPT models", displayName = "ChatGPT", order = 1 }
-    "Grok" = { icon = "🚀", description = "Prompts tailored for xAI's Grok, with real-time focus", displayName = "Grok", order = 2 }
-    "Claude" = { icon = "🧠", description = "Prompts designed for Anthropic's Claude AI", displayName = "Claude", order = 3 }
-    "LLaMA" = { icon = "🐑", description = "Prompts for Meta AI's LLaMA and open-source models", displayName = "LLaMA", order = 4 }
-    "Chain of Thought" = { icon = "🧵", description = "Prompts using step-by-step reasoning", displayName = "Chain of Thought", order = 5 }
-    "Few-Shot" = { icon = "📚", description = "Prompts with few example inputs", displayName = "Few-Shot", order = 6 }
-    "Role-Playing" = { icon = "🎭", description = "Prompts assigning specific roles to AI", displayName = "Role-Playing", order = 7 }
-    "Structured Output" = { icon = "📋", description = "Prompts for JSON or formatted outputs", displayName = "Structured Output", order = 8 }
         
   [params.keywords]
     keywords = [

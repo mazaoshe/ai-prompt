@@ -1,13 +1,13 @@
 ---
-title: "Coding Assistance with AI Prompts"
-description: "Effective prompts for getting coding help from AI models"
+title: "Coding Assistance Prompts"
+description: "Boost your programming productivity with these AI prompts designed for developers. Get help with code generation, debugging, optimization, and learning new technologies."
 date: 2025-08-28
 lastmod: 2025-08-28
-tags: ["Programming", "ChatGPT", "Grok", "Claude"]
+tags: ["Software Developer", "Programmer", "Engineer", "Data Scientist", "DevOps Specialist"]
 categories: ["Programming"]
 series: ["Technical Prompts"]
-images: ["/images/coding-assistance.png"]
-readingTime: 8
+images: ["/images/coding-assistance-prompts.avif"]
+readingTime: 10
 ---
 
 ## Introduction
