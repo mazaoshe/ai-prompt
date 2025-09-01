@@ -532,7 +532,11 @@
     :where(pre):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
       color: var(--tw-prose-pre-code);
       background-color: var(--tw-prose-pre-bg);
-      overflow-x: auto;
+      overflow-x: unset;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      white-space: pre-wrap;
       font-weight: 400;
       font-size: 0.875em;
       line-height: 1.7142857;
