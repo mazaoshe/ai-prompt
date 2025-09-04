@@ -1,6 +1,6 @@
 ---
 title: "Transform Intuition into Strategy: The AI Prompt That Decodes Your Gut Feelings"
-date: 2025-09-04T10:00:00Z
+date: 2025-09-04T22:00:00Z
 description: "Learn how to reverse engineer your intuition with this powerful AI prompt. Turn gut feelings into actionable insights using Claude and ChatGPT for better decision-making."
 keywords: ["AI decision making prompts", "ChatGPT prompt engineering", "intuition analysis AI", "Claude prompt examples", "business decision prompts", "AI prompt optimization"]
 url: "/ai-prompt-gut-feeling-analysis-decision-making"
