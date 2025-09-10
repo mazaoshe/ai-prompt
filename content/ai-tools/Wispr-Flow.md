@@ -5,7 +5,7 @@ date: 2025-09-10
 lastmod: 2025-09-10
 tags: ["Voice Coding", "Developer Tools", "Productivity", "AI Assistant"]
 categories: ["Developer Tools"]
-images: ["https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/wispr.png"]
+images: ["https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/684b3c2e586614c88aa0afde_ws-wc.png"]
 website: "https://wisprflow.ai/post/vibe-coding-supercharged"
 pricing: "Free tier available, Pro plans starting at $19/month"
 robots: "index,follow"
