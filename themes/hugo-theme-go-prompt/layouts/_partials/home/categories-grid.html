@@ -4,58 +4,72 @@
  * @Description: 类别列表
 -->
 <section class="mx-auto px-4 py-16 bg-gray-50">
-  <h2 class="text-3xl font-bold text-center mb-4">Browse AI Prompt Categories</h2>
-  <p class="text-center text-gray-600 mb-12">
-    Find practical AI prompts organized by topic
-  </p>
+    <h2 class="text-3xl font-bold text-center mb-4">Browse AI Prompt Categories</h2>
+    <p class="text-center text-gray-600 mb-12">
+        Find practical AI prompts organized by topic
+    </p>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-    <!-- 创建一个包含分类信息的排序列表 -->
-    {{ $sortedCategories := slice }}
-    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-      {{ $config := $.Site.Params.categoryConfig }}
-      {{ $categoryConfig := $.Site.Params.defaultCategoryConfig }}
-      {{ if isset $config $name }}
-        {{ $categoryConfig = index $config $name }}
-      {{ end }}
-      
-      <!-- 计算只属于 posts 的数量 -->
-      {{ $postCount := 0 }}
-      {{ range $taxonomy }}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <!-- 创建一个包含分类信息的排序列表 -->
+        {{ $sortedCategories := slice }}
+        {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+
+        <!-- 只处理 posts 分类下的内容 -->
+        {{ $postCount := 0 }}
+        {{ range $taxonomy }}
         {{ if eq .Page.Section "posts" }}
-          {{ $postCount = add $postCount 1 }}
+        {{ $postCount = add $postCount 1 }}
         {{ end }}
-      {{ end }}
-      
-      <!-- 获取分类页面链接 -->
-      {{ $categoryPage := $.Site.GetPage (printf "/categories/%s" ($name | urlize)) }}
-      {{ $categoryURL := "" }}
-      {{ if $categoryPage }}
+        {{ end }}
+
+
+        <!-- 只有当分类下有 posts 内容时才显示 -->
+        {{ if gt $postCount 0 }}
+
+        {{ $config := $.Site.Params.categoryConfig }}
+        {{ $categoryConfig := $.Site.Params.defaultCategoryConfig }}
+        {{ if isset $config $name }}
+        {{ $categoryConfig = index $config $name }}
+        {{ end }}
+
+        <!-- 计算只属于 posts 的数量 -->
+        {{ $postCount := 0 }}
+        {{ range $taxonomy }}
+        {{ if eq .Page.Section "posts" }}
+        {{ $postCount = add $postCount 1 }}
+        {{ end }}
+        {{ end }}
+
+        <!-- 获取分类页面链接 -->
+        {{ $categoryPage := $.Site.GetPage (printf "/categories/%s" ($name | urlize)) }}
+        {{ $categoryURL := "" }}
+        {{ if $categoryPage }}
         {{ $categoryURL = $categoryPage.RelPermalink }}
-      {{ else }}
+        {{ else }}
         {{ $categoryURL = printf "/categories/%s/" ($name | urlize) }}
-      {{ end }}
-      
-      {{ $categoryData := dict "name" $name "config" $categoryConfig "count" $postCount "url" $categoryURL }}
-      {{ $sortedCategories = $sortedCategories | append $categoryData }}
-    {{ end }}
-    
-    <!-- 按照order字段排序 -->
-    {{ $sortedCategories = sort $sortedCategories "config.order" }}
-    
-    {{ range $categoryData := $sortedCategories }}
-    <div 
-      class="bg-white rounded-lg border p-6 text-center hover-lift hover-scale transition-all duration-300 cursor-pointer"
-      onclick="window.location.href='{{ $categoryData.url }}'">
-      <div class="text-4xl mb-4">
-        {{ $categoryData.config.icon }}
-      </div>
-      <h3 class="font-semibold text-lg mb-2 hover:text-cyan-500 transition-colors">{{ $categoryData.config.displayName }}</h3>
-      <p class="text-gray-600 text-sm mb-4">
-        {{ $categoryData.config.description }}
-      </p>
-      <div class="text-xs text-gray-500">{{ $categoryData.count }} prompts available</div>
+        {{ end }}
+
+        {{ $categoryData := dict "name" $name "config" $categoryConfig "count" $postCount "url" $categoryURL }}
+        {{ $sortedCategories = $sortedCategories | append $categoryData }}
+        {{ end }}
+        {{ end }}
+
+        <!-- 按照order字段排序 -->
+        {{ $sortedCategories = sort $sortedCategories "config.order" }}
+
+        {{ range $categoryData := $sortedCategories }}
+        <div class="bg-white rounded-lg border p-6 text-center hover-lift hover-scale transition-all duration-300 cursor-pointer"
+            onclick="window.location.href='{{ $categoryData.url }}'">
+            <div class="text-4xl mb-4">
+                {{ $categoryData.config.icon }}
+            </div>
+            <h3 class="font-semibold text-lg mb-2 hover:text-cyan-500 transition-colors">{{
+                $categoryData.config.displayName }}</h3>
+            <p class="text-gray-600 text-sm mb-4">
+                {{ $categoryData.config.description }}
+            </p>
+            <div class="text-xs text-gray-500">{{ $categoryData.count }} prompts available</div>
+        </div>
+        {{ end }}
     </div>
-    {{ end }}
-  </div>
 </section>

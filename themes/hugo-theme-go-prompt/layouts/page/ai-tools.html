@@ -1,0 +1,140 @@
+{{ define "main" }}
+<div class="container mx-auto px-4 py-8">
+    <!-- Breadcrumb -->
+    {{ partial "component/article-breadcrumb.html" . }}
+
+    <!-- Back Button -->
+    <a href="/" class="inline-flex items-center btn btn-ghost btn-ghost hover:text-primary mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to Home
+    </a>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
+            <div class="mb-8">
+                <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
+                
+                {{ if .Description }}
+                <p class="text-xl text-muted-foreground leading-relaxed mb-6">
+                    {{ .Description }}
+                </p>
+                {{ end }}
+
+                <div class="prose max-w-none">
+                    {{ .Content }}
+                </div>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="mt-8">
+                <h2 class="text-2xl font-bold mb-4">Filter by Category</h2>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <button class="category-filter-btn btn btn-secondary btn-sm active" data-category="all">
+                        All Tools
+                    </button>
+                    {{ range .Site.Taxonomies.categories }}
+                        {{ $hasAITools := false }}
+                        {{ range .Pages }}
+                            {{ if eq .Section "ai-tools" }}
+                                {{ $hasAITools = true }}
+                            {{ end }}
+                        {{ end }}
+                        {{ if $hasAITools }}
+                            <button class="category-filter-btn btn btn-outline btn-sm" data-category="{{ .Page.Title | urlize }}">
+                                {{ .Page.Title }}
+                            </button>
+                        {{ end }}
+                    {{ end }}
+                </div>
+            </div>
+
+            <!-- AI Tools Grid -->
+            <div class="mt-8">
+                <h2 class="text-3xl font-bold mb-6">Recommended AI Tools</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 ai-tools-container">
+                    {{ range (where .Site.RegularPages "Section" "ai-tools") }}
+                    <div class="ai-tool-card card bg-white border rounded-lg p-6 hover:shadow-lg transition-shadow" 
+                         data-categories="{{ range .Params.categories }}{{ . | urlize }} {{ end }}">
+                        <div class="flex items-start mb-4">
+                            {{ if .Params.images }}
+                            <img src="{{ index .Params.images 0 }}" alt="{{ .Title }}" class="w-16 h-16 object-contain">
+                            {{ else }}
+                            <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
+                            {{ end }}
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold">{{ .Title }}</h3>
+                                {{ with .Params.categories }}
+                                <p class="text-muted-foreground text-sm">
+                                    {{ range $index, $category := . }}
+                                        {{ if $index }}, {{ end }}
+                                        {{ $category }}
+                                    {{ end }}
+                                </p>
+                                {{ end }}
+                            </div>
+                        </div>
+                        <p class="text-muted-foreground mb-4">
+                            {{ .Description }}
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            {{ range .Params.tags }}
+                            <span class="badge badge-secondary text-xs">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                        {{ with .Params.website }}
+                        <a href="{{ . }}" target="_blank" class="btn btn-primary btn-sm">
+                            Visit Tool
+                        </a>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1">
+            {{ partial "component/sidebar-navigation.html" . }}
+        </div>
+    </div>
+</div>
+
+<!-- 添加分类筛选的 JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.category-filter-btn');
+    const toolCards = document.querySelectorAll('.ai-tool-card');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // 更新活动按钮状态
+            filterButtons.forEach(btn => btn.classList.remove('active', 'btn-secondary'));
+            filterButtons.forEach(btn => btn.classList.add('btn-outline'));
+            this.classList.remove('btn-outline');
+            this.classList.add('active', 'btn-secondary');
+            
+            const selectedCategory = this.getAttribute('data-category');
+            
+            // 显示/隐藏工具卡片
+            toolCards.forEach(card => {
+                if (selectedCategory === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    const cardCategories = card.getAttribute('data-categories');
+                    if (cardCategories && cardCategories.includes(selectedCategory)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
+});
+</script>
+{{ end }}

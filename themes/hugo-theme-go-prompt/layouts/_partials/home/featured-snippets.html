@@ -40,9 +40,12 @@
                     {{ end }}
                 </div>
             </div>
-            <h3 class="text-lg font-semibold mb-2 hover:text-cyan-500 transition-colors">
-                {{ .Title }}
-            </h3>
+
+            <a href="{{ .RelPermalink }}">
+                <h3 class="text-lg font-semibold mb-2 hover:text-cyan-500 transition-colors">
+                    {{ .Title }}
+                </h3>
+            </a>
             <p class="text-gray-600 text-sm mb-4 leading-relaxed">
                 {{ if .Params.description }}
                 {{ .Params.description }}
