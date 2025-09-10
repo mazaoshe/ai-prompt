@@ -5,7 +5,7 @@ date: 2025-09-10
 lastmod: 2025-09-10
 tags: ["Data Analysis", "Business Intelligence", "No-code", "Spreadsheet"]
 categories: ["Analytics Tools"]
-images: 
+images: ["https://julius.ai/favicon.ico"]
 website: "https://julius.ai/"
 pricing: "Free plan available, Pro $12/month"
 robots: "index,follow"
