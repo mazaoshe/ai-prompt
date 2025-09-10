@@ -12,12 +12,12 @@
         Back to Home
     </a>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 gap-8">
         <!-- Main Content -->
         <div class="lg:col-span-2">
             <div class="mb-8">
                 <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
-                
+
                 {{ if .Description }}
                 <p class="text-xl text-muted-foreground leading-relaxed mb-6">
                     {{ .Description }}
@@ -37,17 +37,18 @@
                         All Tools
                     </button>
                     {{ range .Site.Taxonomies.categories }}
-                        {{ $hasAITools := false }}
-                        {{ range .Pages }}
-                            {{ if eq .Section "ai-tools" }}
-                                {{ $hasAITools = true }}
-                            {{ end }}
-                        {{ end }}
-                        {{ if $hasAITools }}
-                            <button class="category-filter-btn btn btn-outline btn-sm" data-category="{{ .Page.Title | urlize }}">
-                                {{ .Page.Title }}
-                            </button>
-                        {{ end }}
+                    {{ $hasAITools := false }}
+                    {{ range .Pages }}
+                    {{ if eq .Section "ai-tools" }}
+                    {{ $hasAITools = true }}
+                    {{ end }}
+                    {{ end }}
+                    {{ if $hasAITools }}
+                    <button class="category-filter-btn btn btn-outline btn-sm"
+                        data-category="{{ .Page.Title | urlize }}">
+                        {{ .Page.Title }}
+                    </button>
+                    {{ end }}
                     {{ end }}
                 </div>
             </div>
@@ -55,24 +56,26 @@
             <!-- AI Tools Grid -->
             <div class="mt-8">
                 <h2 class="text-3xl font-bold mb-6">Recommended AI Tools</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 ai-tools-container">
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 ai-tools-container">
                     {{ range (where .Site.RegularPages "Section" "ai-tools") }}
-                    <div class="ai-tool-card card bg-white border rounded-lg p-6 hover:shadow-lg transition-shadow" 
-                         data-categories="{{ range .Params.categories }}{{ . | urlize }} {{ end }}">
+                    <div class="ai-tool-card card bg-white border rounded-lg p-6 hover:shadow-lg transition-shadow"
+                        data-categories="{{ range .Params.categories }}{{ . | urlize }} {{ end }}">
                         <div class="flex items-start mb-4">
                             {{ if .Params.images }}
                             <img src="{{ index .Params.images 0 }}" alt="{{ .Title }}" class="w-16 h-16 object-contain">
                             {{ else }}
-                            <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
+                            <div class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16">
+                                {{ .Site.Params.defaultIcon }}
+                            </div>
                             {{ end }}
                             <div class="ml-4">
                                 <h3 class="text-xl font-semibold">{{ .Title }}</h3>
                                 {{ with .Params.categories }}
                                 <p class="text-muted-foreground text-sm">
                                     {{ range $index, $category := . }}
-                                        {{ if $index }}, {{ end }}
-                                        {{ $category }}
+                                    {{ if $index }}, {{ end }}
+                                    {{ $category }}
                                     {{ end }}
                                 </p>
                                 {{ end }}
@@ -96,45 +99,40 @@
                 </div>
             </div>
         </div>
-
-        <!-- Sidebar -->
-        <div class="lg:col-span-1">
-            {{ partial "component/sidebar-navigation.html" . }}
-        </div>
     </div>
 </div>
 
 <!-- 添加分类筛选的 JavaScript -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const filterButtons = document.querySelectorAll('.category-filter-btn');
-    const toolCards = document.querySelectorAll('.ai-tool-card');
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // 更新活动按钮状态
-            filterButtons.forEach(btn => btn.classList.remove('active', 'btn-secondary'));
-            filterButtons.forEach(btn => btn.classList.add('btn-outline'));
-            this.classList.remove('btn-outline');
-            this.classList.add('active', 'btn-secondary');
-            
-            const selectedCategory = this.getAttribute('data-category');
-            
-            // 显示/隐藏工具卡片
-            toolCards.forEach(card => {
-                if (selectedCategory === 'all') {
-                    card.style.display = 'block';
-                } else {
-                    const cardCategories = card.getAttribute('data-categories');
-                    if (cardCategories && cardCategories.includes(selectedCategory)) {
+    document.addEventListener('DOMContentLoaded', function () {
+        const filterButtons = document.querySelectorAll('.category-filter-btn');
+        const toolCards = document.querySelectorAll('.ai-tool-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // 更新活动按钮状态
+                filterButtons.forEach(btn => btn.classList.remove('active', 'btn-secondary'));
+                filterButtons.forEach(btn => btn.classList.add('btn-outline'));
+                this.classList.remove('btn-outline');
+                this.classList.add('active', 'btn-secondary');
+
+                const selectedCategory = this.getAttribute('data-category');
+
+                // 显示/隐藏工具卡片
+                toolCards.forEach(card => {
+                    if (selectedCategory === 'all') {
                         card.style.display = 'block';
                     } else {
-                        card.style.display = 'none';
+                        const cardCategories = card.getAttribute('data-categories');
+                        if (cardCategories && cardCategories.includes(selectedCategory)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
                     }
-                }
+                });
             });
         });
     });
-});
 </script>
 {{ end }}
