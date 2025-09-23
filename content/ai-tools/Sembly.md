@@ -5,7 +5,7 @@ date: 2025-09-23
 lastmod: 2025-09-23
 tags: ["Meeting Assistant", "Productivity", "Notetaking"]
 categories: ["Productivity Tools"]
-images: ["/images/sembly-logo.png"]
+images: ["https://www.sembly.ai/wp-content/uploads/2025/05/Sembly-AI-Logo-logo.svg"]
 website: "https://www.sembly.ai/"
 pricing: "Free tier available, Plans start from $12/month"
 ---

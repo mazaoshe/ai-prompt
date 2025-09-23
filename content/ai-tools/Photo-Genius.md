@@ -5,7 +5,7 @@ date: 2025-09-23
 lastmod: 2025-09-23
 tags: ["Photo Editing", "Voice Control", "Image Processing"]
 categories: ["Creative Tools"]
-images: ["/images/photo-genius-logo.png"]
+images: ["https://play-lh.googleusercontent.com/eL-phQCOfvhdKFir0y6deLKcALuWuUUBQIKh4ocn70ybvCgtALjJUYPjJkZmzaeu9SU=w480-h960-rw"]
 website: "https://mainfunc.ai/blog/genspark_photo_genius"
 pricing: "Free to try, Premium features available"
 ---

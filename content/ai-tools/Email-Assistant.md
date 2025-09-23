@@ -5,8 +5,8 @@ date: 2025-09-23
 lastmod: 2025-09-23
 tags: ["Email Automation", "Productivity", "Workflow"]
 categories: ["Productivity Tools"]
-images: ["/images/email-assistant-logo.png"]
-website: "https://www.perplexity.ai/"
+images: ["https://framerusercontent.com/images/IgHj9plQsOU6LTkGCG6BxeoKtQ.png"]
+website: "https://www.perplexity.ai/assistant"
 pricing: "Integrated with Perplexity Pro subscription"
 ---
 
