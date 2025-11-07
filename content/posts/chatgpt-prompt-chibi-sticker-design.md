@@ -2,10 +2,20 @@
 title: "Create Adorable Chibi Stickers with This Powerful ChatGPT Prompt"
 date: 2025-11-07T17:00:00Z
 description: "Discover how to use AI to create charming chibi-style stickers with this comprehensive ChatGPT prompt. Perfect for social media, messaging apps, and personal branding."
-keywords: ["ChatGPT prompt examples", "AI prompt engineering", "chibi sticker design", "kawaii stickers", "AI for creative projects"]
-url: "/chatgpt-prompt-chibi-sticker-design"
-categories: ["Creative Projects"]
-tags: ["Graphic Designer", "Social Media Manager", "Content Creator", "Digital Artist", "Brand Designer"]
+keywords: 
+  - "ChatGPT prompt examples"
+  - "AI prompt engineering"
+  - "chibi sticker design"
+  - "kawaii stickers"
+  - "AI for creative projects"
+categories: 
+  - "Creative Projects"
+tags: 
+  - "Graphic Designer"
+  - "Social Media Manager"
+  - "Content Creator"
+  - "Digital Artist"
+  - "Brand Designer"
 ---
 
 ## Bring Your Personality to Life: Designing Chibi Stickers with AI

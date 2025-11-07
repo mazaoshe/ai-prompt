@@ -1,4 +1,4 @@
 ---
 title: "Tags"
-description: "Browse AI prompts by tags"
+description: "Browse all AI prompt tags"
 ---
