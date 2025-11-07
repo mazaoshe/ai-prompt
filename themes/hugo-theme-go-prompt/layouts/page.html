@@ -11,7 +11,7 @@
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
-        Back to Golang Snippets
+        Back to AI Prompts
     </a>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -87,7 +87,7 @@
 
         {{ if $relatedPosts }}
         <section class="mt-16">
-            <h2 class="text-2xl font-semibold mb-6">Related Snippets</h2>
+            <h2 class="text-2xl font-semibold mb-6">Related Prompts</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {{ range first 3 $relatedPosts }}
                 {{ partial "component/article-related-snippets.html" (dict "item" .) }}

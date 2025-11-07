@@ -73,7 +73,7 @@ relativeURLs = false
 [params]
   description = "Free AI prompts for all tasks. Providing high-quality AI prompts to help users solve problems quickly and improve AI interaction efficiency."
   author = "Silas"
-  defaultImage = "https://image.ypplog.cn/go-snippets-og-image.avif"
+  defaultImage = "https://image.ypplog.cn/ai-prompt-og-image.avif"
 
   [params.contact]
     email = "mazaoshe@hotmail.com"
